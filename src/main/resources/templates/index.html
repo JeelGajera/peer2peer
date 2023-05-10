@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="/assets/peer-logo.png" type="image/png" sizes="16x16">
+  <link type="text/css" rel="stylesheet" href="/style/main.css">
+  <title>Welcome to Peer 2 Peer 😊</title>
+</head>
+
+<body>
+  <main>
+    <div class="flex flex-col sm:flex-row justify-between items-center">
+      <div class="mx-5 w-screen sm:w-[40%] flex flex-col">
+        <div class="flex items-center">
+          <img src="/assets/peer-logo.png" alt="Logo" class="w-18 mr-4" />
+          <h1 class="my-4 text-5xl bg-gradient-to-r from-yellow-400 to-rose-700 bg-clip-text text-transparent">Peer
+            2 Peer <span
+              class="animate-pulse bg-gradient-to-r from-yellow-400 to-rose-700 bg-clip-text text-transparent">>_</span>
+          </h1>
+        </div>
+        <p class="text-lg">Welcome to our peer-to-peer application, where secure and direct file transfers and
+          real-time
+          chat are just
+          a few clicks away. Connect and communicate with ease using our innovative and user-friendly platform.</p>
+        <div class="my-5 cursor-pointer" id='login'>
+          <div class="w-fit relative group">
+            <div
+              class="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200">
+            </div>
+            <div class="relative ring-1 ring-gray-900/5 rounded-lg leading-none flex items-top justify-start">
+              <div class="p-2 rounded-lg flex items-center">
+                <img src="/assets/google.svg" alt="Google" class="w-8" />
+                <span class="text-lg mx-2 text-gray-400 ">Start using p2p</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="mx-5 p-2 w-screen sm:w-[50%] h-auto">
+        <img src="/assets/login.svg" alt="Sigin_img" />
+      </div>
+    </div>
+  </main>
+
+  <!-- scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+  <script src="js/firebase.js" type="module"></script>
+  <script src="js/api.js"></script>
+</body>
+
+</html>

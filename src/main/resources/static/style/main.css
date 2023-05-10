@@ -1,0 +1,12 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    background-color: black;
+    color: azure;
+    font-family: monospace;
+}
+
+.g-signin2 span span {
+    font-size: 18px
+}
