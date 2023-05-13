@@ -27,8 +27,22 @@
 
 .scrollbar::-webkit-scrollbar-thumb {
   background-color: #888888;
+  border-radius: 20px;
 }
 
 .max-h-screen-viewport {
-  max-height: calc(100vh - 56px); /* Subtracting the height of the sticky header */
+  max-height: calc(100vh - 62px); /* Subtracting the height of the sticky header */
+}
+
+body::-webkit-scrollbar {
+  width: 8px;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: #000;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #888888;
+  border-radius: 20px;
 }
