@@ -1,133 +1,13 @@
-// const list = [];
-
-const list = [
-    {
-        name: "John",
-        email: "john@example.com",
-        profileImg: "https://randomuser.me/api/portraits/men/1.jpg"
-    },
-    {
-        name: "John",
-        email: "john@example.com",
-        profileImg: "https://randomuser.me/api/portraits/men/1.jpg"
-    },
-    {
-        name: "John",
-        email: "john@example.com",
-        profileImg: "https://randomuser.me/api/portraits/men/1.jpg"
-    },
-    {
-        name: "John",
-        email: "john@example.com",
-        profileImg: "https://randomuser.me/api/portraits/men/1.jpg"
-    },
-    {
-        name: "John",
-        email: "john@example.com",
-        profileImg: "https://randomuser.me/api/portraits/men/1.jpg"
-    },
-    {
-        name: "John",
-        email: "john@example.com",
-        profileImg: "https://randomuser.me/api/portraits/men/1.jpg"
-    },
-    {
-        name: "John",
-        email: "john@example.com",
-        profileImg: "https://randomuser.me/api/portraits/men/1.jpg"
-    },
-    {
-        name: "John",
-        email: "john@example.com",
-        profileImg: "https://randomuser.me/api/portraits/men/1.jpg"
-    },
-    {
-        name: "John",
-        email: "john@example.com",
-        profileImg: "https://randomuser.me/api/portraits/men/1.jpg"
-    },
-    {
-        name: "John",
-        email: "john@example.com",
-        profileImg: "https://randomuser.me/api/portraits/men/1.jpg"
-    },
-    {
-        name: "John",
-        email: "john@example.com",
-        profileImg: "https://randomuser.me/api/portraits/men/1.jpg"
-    },
-    {
-        name: "John",
-        email: "john@example.com",
-        profileImg: "https://randomuser.me/api/portraits/men/1.jpg"
-    },
-    {
-        name: "John",
-        email: "john@example.com",
-        profileImg: "https://randomuser.me/api/portraits/men/1.jpg"
-    },
-    {
-        name: "John",
-        email: "john@example.com",
-        profileImg: "https://randomuser.me/api/portraits/men/1.jpg"
-    },
-    {
-        name: "John",
-        email: "john@example.com",
-        profileImg: "https://randomuser.me/api/portraits/men/1.jpg"
-    },
-    {
-        name: "John",
-        email: "john@example.com",
-        profileImg: "https://randomuser.me/api/portraits/men/1.jpg"
-    },
-    {
-        name: "John",
-        email: "john@example.com",
-        profileImg: "https://randomuser.me/api/portraits/men/1.jpg"
-    },
-    {
-        name: "John",
-        email: "john@example.com",
-        profileImg: "https://randomuser.me/api/portraits/men/1.jpg"
-    },
-    {
-        name: "John",
-        email: "john@example.com",
-        profileImg: "https://randomuser.me/api/portraits/men/1.jpg"
-    },
-    {
-        name: "John",
-        email: "john@example.com",
-        profileImg: "https://randomuser.me/api/portraits/men/1.jpg"
-    },
-    {
-        name: "John",
-        email: "john@example.com",
-        profileImg: "https://randomuser.me/api/portraits/men/1.jpg"
-    },
-    {
-        name: "John",
-        email: "john@example.com",
-        profileImg: "https://randomuser.me/api/portraits/men/1.jpg"
-    },
-    {
-        name: "John",
-        email: "john@example.com",
-        profileImg: "https://randomuser.me/api/portraits/men/1.jpg"
-    }
-];
-
-const Friends = ({ list }) => {
+const Friends = ({ list, error }) => {
     return (
-        <div className="mr-4 w-full sm:w-[25%] text-2xl font-bold rounded">
+        <div className="mr-4 w-full sm:w-[25%] h-screen text-2xl font-bold rounded">
             <div className="mt-2 p-2 border-b text-center sticky top-0">
                 🤖
                 <span className="bg-gradient-to-r from-yellow-400 to-rose-700 bg-clip-text text-transparent">
                     Friends
                 </span>
             </div>
-            {list.length === 0
+            {list.length === 0 || error
                 ? <EmptyFriends />
                 : (
                     <div className="max-h-screen-viewport overflow-y-auto scrollbar">
@@ -138,22 +18,26 @@ const Friends = ({ list }) => {
                                         return (
                                             <div
                                                 onClick={() => {
-                                                    navigator.clipboard.writeText(friend.email);
+                                                    navigator.clipboard.writeText(friend?.email);
                                                     alert('Email copied to clipboard!');
                                                 }}
                                                 className="m-1 flex items-center py-2 px-5 group hover:bg-gray-200 hover:bg-opacity-20 cursor-pointer rounded"
                                                 key={i}
                                             >
                                                 <div className="mr-2 bg-transparent">
-                                                    <img
-                                                        src={friend.profileImg}
-                                                        alt="profile"
-                                                        className="w-12 h-12 rounded-full"
-                                                    />
+                                                    {
+                                                        friend?.profileImg && (
+                                                            <img
+                                                                src={friend?.profileImg}
+                                                                alt="profile"
+                                                                className="w-12 h-12 rounded-full"
+                                                            />
+                                                        )
+                                                    }
                                                 </div>
                                                 <div className="flex-1 flex-col items-center bg-transparent">
-                                                    <div className="text-sm font-bold bg-transparent">{friend.name}</div>
-                                                    <div className="text-sm font-bold bg-transparent">{friend.email}</div>
+                                                    <div className="text-sm font-bold bg-transparent">{friend?.name}</div>
+                                                    <div className="text-sm font-bold bg-transparent">{friend?.email}</div>
                                                 </div>
                                             </div>
                                         );
@@ -218,14 +102,18 @@ const Intro = () => {
     );
 };
 
-const MainBody = () => {
+const MainBody = ({ user }) => {
     return (
         <>
-            <div className="sm:w-[75%] absolute top-2 right-2">
-                <ProfileHeader name={"Jeel Gajera"} photo={"https://randomuser.me/api/portraits/men/1.jpg"} />
-            </div>
-            <div className="mt-[64px] sm:mt-0 mx-8 p-4 w-full h-full flex flex-col justify-center items-center sm:h-[75vh] sm:w-[75%] bg-white bg-opacity-10 rounded-lg">
-                <Intro />
+            <div className="flex flex-col">
+                <div className="py-4 mx-2">
+                    <ProfileHeader name={user.name} photo={user.profileImg} />
+                </div>
+                <div className="flex flex-col justify-center items-center">
+                    <div className="p-4 w-full h-full flex flex-col justify-center items-center sm:h-[75vh] sm:w-[75%] bg-white bg-opacity-10 rounded-lg">
+                        <Intro />
+                    </div>
+                </div>
             </div>
         </>
     );
@@ -233,10 +121,48 @@ const MainBody = () => {
 
 
 function App() {
+
+    const [list, setList] = React.useState([]);
+    const [user, setUser] = React.useState({});
+    const [loading, setLoading] = React.useState(true);
+    const [error, setError] = React.useState(false);
+
+    React.useEffect(() => {
+        getUserByEmail()
+            .then(data => {
+                setUser(data);
+                return getFriendList(data.email);
+            }
+            ).then(res => {
+                res.map(friend => {
+                    try {
+                        getUserByEmail(friend)
+                            .then(data => {
+                                setList(list => [...list, data]);
+                            }).catch(err => {
+                                console.log(err);
+                                setError(true);
+                            });
+                    } catch (error) {
+                        console.log(error);
+                        setError(true);
+                    }
+                });
+                setLoading(false);
+            }
+            ).catch(err => {
+                console.log(err);
+                setLoading(false);
+                setError(true);
+            }
+            );
+    }, []);
+
+
     return (
-        <main className="flex flex-col-reverse sm:flex-row items-center">
-            <Friends list={list} />
-            <MainBody />
+        <main className="flex flex-col-reverse sm:flex-row">
+            <Friends list={list} error={error}/>
+            <MainBody user={user} />
         </main>
     );
 }

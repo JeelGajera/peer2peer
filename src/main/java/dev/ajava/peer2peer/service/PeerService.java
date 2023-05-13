@@ -20,13 +20,20 @@ public class PeerService {
         Optional<PeerModel> existingPeer = peerRepo.findByEmail(peer.getEmail());
         if (existingPeer.isPresent()) {
             PeerModel updatedPeer = existingPeer.get();
+            if (updatedPeer.getFriendList() != null && !updatedPeer.getFriendList().isEmpty()) {
+                // Preserve the existing friendList
+                peer.setFriendList(updatedPeer.getFriendList());
+            } else {
+                // Initialize the friendList
+                updatedPeer.setFriendList(peer.getFriendList());
+            }
             updatedPeer.setName(peer.getName());
-            updatedPeer.setFriendList(peer.getFriendList());
             return peerRepo.save(updatedPeer);
         } else {
             return peerRepo.save(peer);
         }
     }
+    
 
     // GET Peer by email
     public Optional<PeerModel> getPeerByEmail(String email) {

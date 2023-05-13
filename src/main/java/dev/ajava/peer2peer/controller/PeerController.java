@@ -1,5 +1,6 @@
 package dev.ajava.peer2peer.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,9 +57,9 @@ public class PeerController {
 
     // Get Friendlist by email
     @GetMapping("/get-friend-list/{email}")
-    public ResponseEntity<String> getFriendListByEmail(@PathVariable String email) {
+    public ResponseEntity<List<String>> getFriendListByEmail(@PathVariable String email) {
         try {
-            return ResponseEntity.ok(peerService.getFriendListByEmail(email).toString());
+            return ResponseEntity.ok(peerService.getFriendListByEmail(email));
 
         } catch (Exception e) {
             return ResponseEntity.notFound().build();
