@@ -3,6 +3,7 @@ package dev.ajava.peer2peer.controller;
 import java.util.List;
 import java.util.Optional;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,7 +32,7 @@ public class PeerController {
     }
 
     // GET Peer by email
-    @GetMapping("/{email}")
+    @GetMapping("/data/{email}")
     public ResponseEntity<PeerModel> getPeerByEmail(@PathVariable String email) {
         Optional<PeerModel> peer = peerService.getPeerByEmail(email);
         if (peer.isPresent()) {
@@ -60,6 +61,39 @@ public class PeerController {
     public ResponseEntity<List<String>> getFriendListByEmail(@PathVariable String email) {
         try {
             return ResponseEntity.ok(peerService.getFriendListByEmail(email));
+
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    //Get Id by email
+    @GetMapping("/get-id/{email}")
+    public ResponseEntity<String> getIdByEmail(@PathVariable String email) {
+        try {
+            return ResponseEntity.ok(peerService.getIdByEmail(email));
+
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    //Get email by Id
+    @GetMapping("/get-email/{id}")
+    public ResponseEntity<String> getEmailById(@PathVariable ObjectId id) {
+        try {
+            return ResponseEntity.ok(peerService.getEmailById(id));
+
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    //Get User by Id
+    @GetMapping("/get-user/{id}")
+    public ResponseEntity<Optional<PeerModel>> getUserById(@PathVariable ObjectId id) {
+        try {
+            return ResponseEntity.ok(peerService.getUserById(id));
 
         } catch (Exception e) {
             return ResponseEntity.notFound().build();

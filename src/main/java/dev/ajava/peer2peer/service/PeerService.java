@@ -3,6 +3,7 @@ package dev.ajava.peer2peer.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -61,5 +62,31 @@ public class PeerService {
         } else {
             return null;
         }
+    }
+
+    //Get Id by email
+    public String getIdByEmail(String email) {
+        Optional<PeerModel> peer = peerRepo.findByEmail(email);
+        if (peer.isPresent()) {
+            ObjectId objectId = peer.get().getId();
+            return objectId.toString(); // Convert ObjectId to string
+        } else {
+            return null;
+        }
+    }
+
+    //Get Email by Id
+    public String getEmailById(ObjectId id) {
+        Optional<PeerModel> peer = peerRepo.findById(id);
+        if (peer.isPresent()) {
+            return peer.get().getEmail();
+        } else {
+            return null;
+        }
+    }
+
+    //Get User by Id
+    public Optional<PeerModel> getUserById(ObjectId id) {
+        return peerRepo.findById(id);
     }
 }

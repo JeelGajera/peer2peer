@@ -22,6 +22,10 @@ public class PeerModel {
     private String profileImg;
     private List<String> friendList;
 
+    public ObjectId getId() {
+        return id;
+    }
+
     public List<String> getFriendList() {
         return friendList;
     }

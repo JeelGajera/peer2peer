@@ -19,12 +19,12 @@ function createUser({ name, email, profileImg }) {
                 window.location.href = '/home';
             } else {
                 return response.json().then(error => {
-                    throw new Error(error.message);
+                    alert(error.message);
                 });
             }
         })
         .catch(error => {
-            alert(error.message);
+            toastr.error('Something went wrong, please try again later');
         });
 
     // Clear cookies and set email cookie to expire in 1 month
@@ -37,16 +37,20 @@ async function getUserByEmail(email) {
     try {
         // If email parameter is not provided, get it from cookies
         if (!email) {
-            email = document.cookie.split('; ').find(row => row.startsWith('email')).split('=')[1];
+            try {
+                email = document.cookie.split('; ').find(row => row.startsWith('email')).split('=')[1];
+            } catch (error) {
+                window.location.href = '/';
+            }
         }
 
-        const response = await fetch(`/api/peer/${email}`);
+        const response = await fetch(`/api/peer/data/${email}`);
 
         if (response.ok) {
             return response.json();
         } else {
             const error = await response.json();
-            throw new Error(error.message);
+            alert(error.message);
         }
     } catch (error) {
         alert(error.message);
@@ -92,3 +96,49 @@ const getFriendList = async (email) => {
         console.log('Request failed:', error);
     }
 };
+
+//Get Id of User by email
+const getIdByEmail = async (email) => {
+    try {
+        const response = await fetch(`/api/peer/get-id/${email}`);
+        if (response.ok) {
+            const data = await response.text();
+            return data;
+        } else {
+            console.log('Request failed:', response.status);
+        }
+    } catch (error) {
+        console.log('Request failed:', error);
+    }
+};
+
+//Get Email of User by Id
+const getEmailById = async (id) => {
+    try {
+        const response = await fetch(`/api/peer/get-email/${id}`);
+        if (response.ok) {
+            const data = await response.text();
+            return data;
+        } else {
+            console.log('Request failed:', response.status);
+        }
+    } catch (error) {
+        console.log('Request failed:', error);
+    }
+};
+
+//Get User by Id
+const getUserById = async (id) => {
+    try {
+        const response = await fetch(`/api/peer/get-user/${id}`);
+        if (response.ok) {
+            const data = await response.json();
+            return data;
+        } else {
+            console.log('Request failed:', response.status);
+        }
+    } catch (error) {
+        console.log('Request failed:', error);
+    }
+};
+// <======  Coman JS Functions  ======>
