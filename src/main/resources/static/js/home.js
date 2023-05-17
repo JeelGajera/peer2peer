@@ -135,7 +135,7 @@ const MainBody = ({ user, hostPeerId }) => {
     }
 
     function startPeer(resolvedId) {
-        const peer = new Peer(resolvedId);
+        const peer = new Peer(resolvedId, {reliable: true});
         peerMain.current = peer;
 
         toggleShow();
