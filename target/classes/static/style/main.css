@@ -1,0 +1,67 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  
+  font-family: monospace;
+  scroll-behavior: smooth;
+}
+
+.g-signin2 span span {
+  font-size: 18px;
+}
+
+.scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #888888 #f3f3f3;
+}
+
+.scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  background-color: #000;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background-color: #888888;
+  border-radius: 20px;
+}
+
+.max-h-screen-viewport {
+  max-height: calc(100vh - 62px); /* Subtracting the height of the sticky header */
+}
+
+body, html {
+  background-color: black;
+  color: azure;
+}
+
+body::-webkit-scrollbar {
+  width: 8px;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: #000;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #888888;
+  border-radius: 20px;
+}
+
+.bgClear {
+  background-color: transparent;
+}
+
+.msg_left {
+  width: full;
+  text-align: left;
+  color: #f8b34b;
+}
+
+.msg_right {
+  width: full;
+  text-align: right;
+}

@@ -1,0 +1,42 @@
+{"properties": [
+  {
+    "name": "firebase.key",
+    "type": "java.lang.String",
+    "description": "A description for 'firebase.key'"
+  },
+  {
+    "name": "firebase.auth.domain",
+    "type": "java.lang.String",
+    "description": "A description for 'firebase.auth.domain'"
+  },
+  {
+    "name": "firebase.project.id",
+    "type": "java.lang.String",
+    "description": "A description for 'firebase.project.id'"
+  },
+  {
+    "name": "firebase.storage.bucket",
+    "type": "java.lang.String",
+    "description": "A description for 'firebase.storage.bucket'"
+  },
+  {
+    "name": "firebase.messaging.sender.id",
+    "type": "java.lang.String",
+    "description": "A description for 'firebase.messaging.sender.id'"
+  },
+  {
+    "name": "firebase.app.id",
+    "type": "java.lang.String",
+    "description": "A description for 'firebase.app.id'"
+  },
+  {
+    "name": "firebase.measurement.id",
+    "type": "java.lang.String",
+    "description": "A description for 'firebase.measurement.id'"
+  },
+  {
+    "name": "firebase.key",
+    "type": "java.lang.String",
+    "description": "A description for 'firebase.key'"
+  }
+]}

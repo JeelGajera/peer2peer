@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: dev.ajava.peer2peer.Peer2peerApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 12.072 s - in dev.ajava.peer2peer.Peer2peerApplicationTests
